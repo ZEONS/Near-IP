@@ -52,9 +52,8 @@ ZEONS IP 위치정보 서비스는 방대한 인터넷 네트워크 데이터를
 ## 3. 타이포그래피 (Typography)
 
 ### 3.1 폰트 패밀리
-- **기본 UI & 시스템 폰트**: `Paperlogy` (단단하고 정돈된 프리미엄 기하학적 산세리프)
-- **보조 UI 폴백 폰트**: `Pretendard`, `-apple-system`, `sans-serif`
-- **코드 & 숫자 폰트**: `JetBrains Mono`, `Fira Code`, `monospace` (IP 주소, API 코드, 수치 표시)
+- **단일 전역 시스템 폰트**: `Paperlogy` (모든 한글, 영문, 숫자, 코드, IP 주소, 터미널 100% 단일 서체 통일)
+- **보조 폴백 폰트**: `-apple-system`, `BlinkMacSystemFont`, `'Segoe UI'`, `Roboto`, `sans-serif`
 
 ### 3.2 공식 글자 굵기 (Font Weight) 계층 규격
 | 굵기 (Weight) | 명칭 (Name) | 적용 대상 및 UI 요소 | Tailwind 클래스 |
@@ -73,7 +72,7 @@ ZEONS IP 위치정보 서비스는 방대한 인터넷 네트워크 데이터를
 | **Card H3** | 18px ~ 20px (`1.125rem~1.25rem`)| Bold (700) | 1.35 | 기능 카드 및 모달 타이틀 |
 | **Body Large** | 18px (`1.125rem`) | Medium (500) | 1.6 | 히어로 서브 카피 |
 | **Body Base** | 14px ~ 15px (`0.875rem~0.9375rem`) | Regular (400) / Medium (500) | 1.6 | 일반 본문 및 기능 설명 |
-| **Code / Mono**| 12px ~ 13px (`0.75rem~0.8125rem`) | Medium (500) / Bold (700) | 1.5 | IP 주소, API 패킷, 파라미터 |
+| **Code / Data**| 12px ~ 13px (`0.75rem~0.8125rem`) | Medium (500) / Bold (700) | 1.5 | IP 주소, API 패킷, 파라미터 (Paperlogy) |
 | **Badge / Tag**| 10px ~ 11px (`0.625rem~0.6875rem`)| SemiBold (600) | 1.0 | 상태 태그, 카테고리 칩 |
 
 ---

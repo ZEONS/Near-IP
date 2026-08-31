@@ -15,9 +15,6 @@
   <!-- Iconify Solar Icons -->
   <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
-  <!-- JetBrains Mono Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap">
-
   <style>
     /* ======================================================== */
     /* Paperlogy (페이퍼로지) Web Font Full Weights (100~900)   */
@@ -86,14 +83,11 @@
       font-display: swap;
     }
 
-    /* Universal Strict Paperlogy Font Enforcement */
+    /* Universal Strict Paperlogy Font Enforcement - 100% All Elements */
     html, body, *, *::before, *::after,
-    input, button, select, textarea, option, optgroup, a, p, span, h1, h2, h3, h4, h5, h6, label, div {
+    input, button, select, textarea, option, optgroup, a, p, span, h1, h2, h3, h4, h5, h6, label, div,
+    code, pre, kbd, samp, table, tr, th, td, .font-mono, input.font-mono, [class*="font-mono"] {
       font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    }
-
-    code, pre, kbd, samp, .font-mono, input.font-mono, [class*="font-mono"] {
-      font-family: 'JetBrains Mono', monospace !important;
     }
 
     body {
