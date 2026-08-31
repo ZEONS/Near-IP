@@ -32,7 +32,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Paperlogy', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+            sans: ['"Paperlogy"', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'Fira Code', 'ui-monospace', 'monospace']
           },
           colors: {
@@ -81,56 +81,82 @@
   </script>
 
   <style>
-    /* Paperlogy (페이퍼로지) Web Font CDN (Noonnu) */
+    /* ======================================================== */
+    /* Paperlogy (페이퍼로지) Web Font Full Weights (100~900)   */
+    /* ======================================================== */
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
+      font-weight: 100;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
+      font-weight: 200;
+      font-style: normal;
+      font-display: swap;
+    }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
       font-weight: 300;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
       font-weight: 400;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
       font-weight: 500;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
       font-weight: 600;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
       font-weight: 700;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
       font-weight: 800;
       font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
     }
 
-    /* Global Font Enforcement - Paperlogy */
-    *, *::before, *::after {
-      font-family: 'Paperlogy', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', sans-serif;
+    /* Universal Strict Paperlogy Font Enforcement */
+    html, body, *, *::before, *::after,
+    input, button, select, textarea, option, optgroup, a, p, span, h1, h2, h3, h4, h5, h6, label, div {
+      font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     }
 
     /* Monospace Code Font Override */
-    code, pre, kbd, samp, .font-mono, input.font-mono, [class*="font-mono"] {
+    code, pre, kbd, samp, .font-mono, input.font-mono, [class*="font-mono"], #targetIpInput, #resRawPacket, #apiEndpointUrl {
       font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
-    }
-
-    input, button, select, textarea {
-      font-family: inherit;
     }
 
     body {
@@ -392,14 +418,14 @@
             <!-- Quick Samples -->
             <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
               <span class="text-slate-400 font-medium mr-1">⚡ 빠른 테스트 샘플:</span>
-              <button onclick="setSampleIp('221.148.24.12', 'KT 고정 IP (서울 강남구)')" class="px-3 py-1 rounded-lg bg-slate-800/70 hover:bg-brand-900/40 text-slate-300 hover:text-brand-300 border border-white/10 hover:border-brand-400/40 transition-colors font-mono">
-                KT 고정 IP (221.148.x.x)
+              <button onclick="setSampleIp('221.148.24.12', 'KT 고정 IP (서울 강남구)')" class="px-3 py-1 rounded-lg bg-slate-800/70 hover:bg-brand-900/40 text-slate-300 hover:text-brand-300 border border-white/10 hover:border-brand-400/40 transition-colors font-medium">
+                KT 고정 IP (<span class="font-mono">221.148.x.x</span>)
               </button>
-              <button onclick="setSampleIp('112.164.88.54', 'SKB 유동 IP (부산 해운대구)')" class="px-3 py-1 rounded-lg bg-slate-800/70 hover:bg-brand-900/40 text-slate-300 hover:text-brand-300 border border-white/10 hover:border-brand-400/40 transition-colors font-mono">
-                SKB 유동 IP (112.164.x.x)
+              <button onclick="setSampleIp('112.164.88.54', 'SKB 유동 IP (부산 해운대구)')" class="px-3 py-1 rounded-lg bg-slate-800/70 hover:bg-brand-900/40 text-slate-300 hover:text-brand-300 border border-white/10 hover:border-brand-400/40 transition-colors font-medium">
+                SKB 유동 IP (<span class="font-mono">112.164.x.x</span>)
               </button>
-              <button onclick="setSampleIp('211.234.119.7', 'LGU+ 모바일망 (대구 수성구)')" class="px-3 py-1 rounded-lg bg-slate-800/70 hover:bg-brand-900/40 text-slate-300 hover:text-brand-300 border border-white/10 hover:border-brand-400/40 transition-colors font-mono">
-                LGU+ 무선 IP (211.234.x.x)
+              <button onclick="setSampleIp('211.234.119.7', 'LGU+ 모바일망 (대구 수성구)')" class="px-3 py-1 rounded-lg bg-slate-800/70 hover:bg-brand-900/40 text-slate-300 hover:text-brand-300 border border-white/10 hover:border-brand-400/40 transition-colors font-medium">
+                LGU+ 무선 IP (<span class="font-mono">211.234.x.x</span>)
               </button>
             </div>
           </div>
@@ -415,10 +441,10 @@
               <div class="w-2 h-2 rounded-full bg-brand-400 z-10 shadow-[0_0_10px_#22d3ee]"></div>
             </div>
             <div class="text-center">
-              <p class="text-sm font-semibold text-brand-300 font-mono tracking-wide animate-pulse">
+              <p class="text-sm font-semibold text-brand-300 tracking-wide animate-pulse">
                 가상 전봇대 매핑 및 기지국 데이터 패킷 정밀 스캔 중...
               </p>
-              <p class="text-xs text-slate-400 mt-1" id="scanStepText">통신 3사 백본 라우팅 경로 추적 (4.2ms)</p>
+              <p class="text-xs text-slate-400 mt-1 font-medium" id="scanStepText">통신 3사 백본 라우팅 경로 추적 (<span class="font-mono">4.2ms</span>)</p>
             </div>
           </div>
 
@@ -533,7 +559,8 @@
           누구도 모방할 수 없는 <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-cyan-400">ZEONS 독자 핵심 기술</span>
         </h2>
         <p class="text-slate-300 text-base font-medium">
-          대한민국 통신 3사 공식 데이터 파이프라인과 유동 IP 정밀 추정 알고리즘을 기반으로 업계 최고 수준의 정밀도를 실현합니다.
+          대한민국 통신 3사 공식 데이터 파이프라인과 유동 IP 정밀 추정 알고리즘을 기반으로<br class="hidden sm:inline">
+          업계 최고 수준의 정밀도를 실현합니다.
         </p>
       </div>
 
@@ -556,7 +583,7 @@
           </div>
           <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-medium">
             <span>일일 갱신 데이터</span>
-            <span class="font-bold text-white font-mono">5,000만+ Record</span>
+            <span class="font-bold text-white"><span class="font-mono">5,000</span>만+ Record</span>
           </div>
         </div>
 
@@ -579,7 +606,7 @@
           </div>
           <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-medium">
             <span>유동 IP 위치 보정률</span>
-            <span class="font-bold text-brand-300 font-mono">최대 +42% 향상</span>
+            <span class="font-bold text-brand-300">최대 <span class="font-mono">+42%</span> 향상</span>
           </div>
         </div>
 
@@ -599,7 +626,7 @@
           </div>
           <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-medium">
             <span>광고 클릭 전환율(CTR)</span>
-            <span class="font-bold text-purple-300 font-mono">평균 3.4배 상승</span>
+            <span class="font-bold text-purple-300">평균 <span class="font-mono">3.4배</span> 상승</span>
           </div>
         </div>
 
@@ -648,7 +675,7 @@
           </p>
           <div class="w-full pt-3 border-t border-white/10 flex justify-between text-xs font-medium">
             <span class="text-slate-400">커버리지 비율</span>
-            <span class="font-bold text-brand-300 font-mono">95% 이상</span>
+            <span class="font-bold text-brand-300"><span class="font-mono">95%</span> 이상</span>
           </div>
         </div>
 
@@ -694,7 +721,7 @@
           </p>
           <div class="w-full pt-3 border-t border-white/10 flex justify-between text-xs font-medium">
             <span class="text-slate-400">글로벌 커버리지</span>
-            <span class="font-bold text-emerald-300 font-mono">4 ~ 5% (국가단위)</span>
+            <span class="font-bold text-emerald-300"><span class="font-mono">4 ~ 5%</span> (국가단위)</span>
           </div>
         </div>
 
@@ -703,7 +730,7 @@
       <!-- Reliability Proof Matrix Banner -->
       <div class="glass-card rounded-2xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center reveal">
         <div class="space-y-1">
-          <div class="text-2xl sm:text-3xl font-bold text-white font-mono">1.2억+</div>
+          <div class="text-2xl sm:text-3xl font-bold text-white"><span class="font-mono">1.2</span>억+</div>
           <div class="text-xs text-slate-400 font-medium">일일 IP 쿼리 처리량</div>
         </div>
         <div class="space-y-1 border-l border-white/10">
@@ -1212,6 +1239,16 @@
     </div>
   </div>
 
+  <!-- Back to Top Floating Button -->
+  <button 
+    id="backToTopBtn" 
+    onclick="scrollToTop()" 
+    aria-label="맨 위로 가기" 
+    title="맨 위로 가기"
+    class="fixed bottom-8 right-8 z-40 p-3.5 rounded-2xl glass-card border border-brand-400/40 text-brand-300 shadow-[0_0_25px_rgba(6,182,212,0.25)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] hover:border-cyan-300 hover:text-white transition-all duration-300 opacity-0 translate-y-4 pointer-events-none group flex items-center justify-center">
+    <iconify-icon icon="solar:alt-arrow-up-bold" class="text-xl group-hover:-translate-y-1 transition-transform"></iconify-icon>
+  </button>
+
   <!-- ======================================================== -->
   <!-- JAVASCRIPT LOGIC & INTERACTION SCRIPTS                   -->
   <!-- ======================================================== -->
@@ -1430,6 +1467,22 @@
       setTimeout(() => {
         modal.classList.add('hidden');
       }, 300);
+    }
+
+    // Back to Top Scroll Logic
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        backToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Mobile Menu Toggle

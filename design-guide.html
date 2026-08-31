@@ -19,50 +19,80 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 
   <style>
-    /* Paperlogy (페이퍼로지) Web Font CDN (Noonnu) */
+    /* ======================================================== */
+    /* Paperlogy (페이퍼로지) Web Font Full Weights (100~900)   */
+    /* ======================================================== */
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
+      font-weight: 100;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
+      font-weight: 200;
+      font-style: normal;
+      font-display: swap;
+    }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
       font-weight: 300;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
       font-weight: 400;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
       font-weight: 500;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
       font-weight: 600;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
       font-weight: 700;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
       font-family: 'Paperlogy';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
       font-weight: 800;
       font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
     }
 
-    /* Global Paperlogy Font Enforcement */
-    *, *::before, *::after {
-      font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* Universal Strict Paperlogy Font Enforcement */
+    html, body, *, *::before, *::after,
+    input, button, select, textarea, option, optgroup, a, p, span, h1, h2, h3, h4, h5, h6, label, div {
+      font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     }
 
-    code, pre, kbd, samp, .font-mono {
+    code, pre, kbd, samp, .font-mono, input.font-mono, [class*="font-mono"] {
       font-family: 'JetBrains Mono', monospace !important;
     }
 
@@ -489,6 +519,16 @@
     HEX 코드 복사 완료!
   </div>
 
+  <!-- Back to Top Floating Button -->
+  <button 
+    id="backToTopBtn" 
+    onclick="scrollToTop()" 
+    aria-label="맨 위로 가기" 
+    title="맨 위로 가기"
+    class="fixed bottom-8 right-8 z-40 p-3.5 rounded-2xl glass-card border border-cyan-400/40 text-cyan-300 shadow-[0_0_25px_rgba(6,182,212,0.25)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] hover:border-cyan-300 hover:text-white transition-all duration-300 opacity-0 translate-y-4 pointer-events-none group flex items-center justify-center">
+    <iconify-icon icon="solar:alt-arrow-up-bold" class="text-xl group-hover:-translate-y-1 transition-transform"></iconify-icon>
+  </button>
+
   <script>
     function copyColor(hex, el) {
       navigator.clipboard.writeText(hex).then(() => {
@@ -501,6 +541,22 @@
           setTimeout(() => toast.classList.add('hidden'), 300);
         }, 1800);
       });
+    }
+
+    // Back to Top Scroll Logic
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        backToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 </body>
