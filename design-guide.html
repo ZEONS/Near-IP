@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEONS Supanova Design System Guide | 주식회사 제온스</title>
+  
+  <!-- Official Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Iconify Solar Icons -->
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+  <!-- JetBrains Mono Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+
+  <style>
+    /* Paperlogy (페이퍼로지) Web Font CDN (Noonnu) */
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    /* Global Paperlogy Font Enforcement */
+    *, *::before, *::after {
+      font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    code, pre, kbd, samp, .font-mono {
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    body {
+      background-color: #040711;
+      color: #f1f5f9;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Cyber Grid Background */
+    .cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.25), inset 0 0 15px rgba(6, 182, 212, 0.05);
+      transform: translateY(-3px);
+    }
+
+    .neon-btn {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+      border: 1px solid rgba(34, 211, 238, 0.5);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
+      transition: all 0.3s ease;
+    }
+    .neon-btn:hover {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(59, 130, 246, 0.4));
+      border-color: rgba(34, 211, 238, 0.9);
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.55);
+      transform: translateY(-2px);
+    }
+
+    /* Radar scan gradient */
+    .radar-beam {
+      background: conic-gradient(from 0deg, rgba(6, 182, 212, 0.5) 0deg, rgba(6, 182, 212, 0.1) 45deg, transparent 60deg, transparent 360deg);
+      animation: radarSpin 3s linear infinite;
+    }
+
+    @keyframes radarSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-white">
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 left-1/4 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 -right-20 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-10 left-10 w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[150px]"></div>
+  </div>
+
+  <!-- Background Cyber Grid -->
+  <div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
+
+  <!-- Main Container -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    
+    <!-- Top Header -->
+    <header class="glass-card rounded-3xl p-8 sm:p-10 border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="space-y-2">
+        <div class="flex items-center gap-3">
+          <img src="./assets/zeons-logo.png" alt="ZEONS" class="h-8 w-auto object-contain" />
+          <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">
+            DESIGN SYSTEM v2.0
+          </span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Supanova Design System Guide
+        </h1>
+        <p class="text-sm sm:text-base text-slate-300">
+          주식회사 제온스 IP 위치정보 서비스(Near-IP) 공식 디자인 가이드라인 & 인터랙티브 쇼케이스
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="px-4 py-2 rounded-xl bg-slate-900/90 border border-white/10 text-xs flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-slate-300 font-medium">Font: <strong>Paperlogy (페이퍼로지)</strong></span>
+        </div>
+        <a href="index.html" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white neon-btn flex items-center gap-1.5">
+          <iconify-icon icon="solar:arrow-right-up-bold"></iconify-icon>
+          <span>랜딩페이지 열기</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ======================================================== -->
+    <!-- 1. COLOR PALETTE SYSTEM                                  -->
+    <!-- ======================================================== -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-2 pb-2 border-b border-white/10">
+        <iconify-icon icon="solar:pallete-2-bold" class="text-2xl text-cyan-400"></iconify-icon>
+        <h2 class="text-2xl font-bold text-white">1. 컬러 시스템 (Color Palette)</h2>
+        <span class="text-xs text-slate-400 ml-auto">카드를 클릭하여 HEX 코드를 복사하세요</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        
+        <!-- Color 1 -->
+        <div onclick="copyColor('#040711', this)" class="glass-card glass-card-hover rounded-2xl p-4 cursor-pointer space-y-3">
+          <div class="w-full h-16 rounded-xl border border-white/15 bg-[#040711] shadow-inner"></div>
+          <div>
+            <div class="text-xs font-bold text-white">Deep Canvas</div>
+            <div class="text-[11px] font-mono text-slate-400">#040711</div>
+            <div class="text-[10px] text-slate-500 mt-1">최하단 배경색</div>
+          </div>
+        </div>
+
+        <!-- Color 2 -->
+        <div onclick="copyColor('#0F172A', this)" class="glass-card glass-card-hover rounded-2xl p-4 cursor-pointer space-y-3">
+          <div class="w-full h-16 rounded-xl border border-white/15 bg-[#0F172A] shadow-inner"></div>
+          <div>
+            <div class="text-xs font-bold text-white">Glass Surface</div>
+            <div class="text-[11px] font-mono text-slate-400">#0F172A (65%)</div>
+            <div class="text-[10px] text-slate-500 mt-1">글래스 카드 표면</div>
+          </div>
+        </div>
+
+        <!-- Color 3 -->
+        <div onclick="copyColor('#22D3EE', this)" class="glass-card glass-card-hover rounded-2xl p-4 cursor-pointer space-y-3 border-cyan-500/30">
+          <div class="w-full h-16 rounded-xl border border-cyan-400/30 bg-[#22D3EE] shadow-[0_0_20px_rgba(34,211,238,0.4)]"></div>
+          <div>
+            <div class="text-xs font-bold text-cyan-300">Cyan Glow</div>
+            <div class="text-[11px] font-mono text-slate-400">#22D3EE</div>
+            <div class="text-[10px] text-slate-500 mt-1">메인 네온 하이라이트</div>
+          </div>
+        </div>
+
+        <!-- Color 4 -->
+        <div onclick="copyColor('#06B6D4', this)" class="glass-card glass-card-hover rounded-2xl p-4 cursor-pointer space-y-3">
+          <div class="w-full h-16 rounded-xl border border-white/15 bg-[#06B6D4] shadow-[0_0_15px_rgba(6,182,212,0.3)]"></div>
+          <div>
+            <div class="text-xs font-bold text-white">Brand Cyan</div>
+            <div class="text-[11px] font-mono text-slate-400">#06B6D4</div>
+            <div class="text-[10px] text-slate-500 mt-1">브랜드 메인 컬러</div>
+          </div>
+        </div>
+
+        <!-- Color 5 -->
+        <div onclick="copyColor('#3B82F6', this)" class="glass-card glass-card-hover rounded-2xl p-4 cursor-pointer space-y-3">
+          <div class="w-full h-16 rounded-xl border border-white/15 bg-[#3B82F6] shadow-[0_0_15px_rgba(59,130,246,0.3)]"></div>
+          <div>
+            <div class="text-xs font-bold text-white">Cyber Blue</div>
+            <div class="text-[11px] font-mono text-slate-400">#3B82F6</div>
+            <div class="text-[10px] text-slate-500 mt-1">네트워크 & 서브톤</div>
+          </div>
+        </div>
+
+        <!-- Color 6 -->
+        <div onclick="copyColor('#34D399', this)" class="glass-card glass-card-hover rounded-2xl p-4 cursor-pointer space-y-3">
+          <div class="w-full h-16 rounded-xl border border-white/15 bg-[#34D399] shadow-[0_0_15px_rgba(52,211,153,0.3)]"></div>
+          <div>
+            <div class="text-xs font-bold text-white">Success Emerald</div>
+            <div class="text-[11px] font-mono text-slate-400">#34D399</div>
+            <div class="text-[10px] text-slate-500 mt-1">신뢰도 & 보안 정상</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 2. TYPOGRAPHY SYSTEM (Paperlogy Font Showcase)           -->
+    <!-- ======================================================== -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-2 pb-2 border-b border-white/10">
+        <iconify-icon icon="solar:text-bold" class="text-2xl text-cyan-400"></iconify-icon>
+        <h2 class="text-2xl font-bold text-white">2. 타이포그래피 및 글자 굵기 (Weight Guide)</h2>
+      </div>
+
+      <!-- Weight Rules Matrix Table -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+        <h3 class="text-base font-bold text-cyan-300 flex items-center gap-2">
+          <iconify-icon icon="solar:ruler-bold" class="text-cyan-400"></iconify-icon>
+          <span>공식 글자 굵기 계층 규격 (Font Weight Standard)</span>
+        </h3>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-white/10 text-slate-400 font-semibold">
+                <th class="pb-3 w-36">권장 굵기</th>
+                <th class="pb-3 w-32">Tailwind Class</th>
+                <th class="pb-3">적용 대상 및 UI 요소</th>
+                <th class="pb-3">실제 렌더링 예시</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-200">
+              <tr>
+                <td class="py-3.5 font-bold text-white">700 (권장 굵기)</td>
+                <td class="py-3.5 font-mono text-cyan-300">font-bold</td>
+                <td class="py-3.5 font-medium text-slate-300">페이지 제목 (H1), 중요 영역 제목 (H2, H3), 모달 제목</td>
+                <td class="py-3.5 text-base font-bold text-white">비즈니스의 지도를 바꾸다</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 font-bold text-white">700</td>
+                <td class="py-3.5 font-mono text-cyan-300">font-bold</td>
+                <td class="py-3.5 font-medium text-slate-300">핵심 실행 버튼 (CTA), 선택된 탭 (Active Tab)</td>
+                <td class="py-3.5 font-bold text-brand-300">API 무료 체험</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 font-semibold text-white">600</td>
+                <td class="py-3.5 font-mono text-cyan-300">font-semibold</td>
+                <td class="py-3.5 font-medium text-slate-300">상태 배지, 보조 버튼, 비선택 탭, 입력 라벨 (`label`), 중간 강조</td>
+                <td class="py-3.5 font-semibold text-emerald-300">MATCH_SUCCESS</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 font-medium text-white">500</td>
+                <td class="py-3.5 font-mono text-cyan-300">font-medium</td>
+                <td class="py-3.5 font-medium text-slate-300">설명, 출처, 서브 카피, 본문 보조 정보, 메트릭 라벨</td>
+                <td class="py-3.5 font-medium text-slate-300">5ms 초고속 API로 제공하는 솔루션</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 font-normal text-white">400</td>
+                <td class="py-3.5 font-mono text-cyan-300">font-normal</td>
+                <td class="py-3.5 font-medium text-slate-300">일반 설명, 카드 본문 문단 (장식 목적의 과도한 굵기 지양)</td>
+                <td class="py-3.5 font-normal text-slate-400">수시로 변하는 유동 IP라도 정밀 추정합니다.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Type Scale Previews -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-6 divide-y divide-white/10">
+        
+        <!-- Scale 1 -->
+        <div class="pt-2 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="w-52 text-xs text-slate-400 space-y-0.5">
+            <div class="font-bold text-white">Display H1 (Bold 700)</div>
+            <div class="font-mono text-[11px]">48px / 1.15 line-height</div>
+          </div>
+          <div class="flex-1 text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            IP 주소 하나로 비즈니스의 지도를 바꾸다
+          </div>
+        </div>
+
+        <!-- Scale 2 -->
+        <div class="pt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="w-52 text-xs text-slate-400 space-y-0.5">
+            <div class="font-bold text-white">Section H2 (Bold 700)</div>
+            <div class="font-mono text-[11px]">30px / 1.25 line-height</div>
+          </div>
+          <div class="flex-1 text-2xl font-bold text-white">
+            누구도 모방할 수 없는 ZEONS 독자 핵심 기술
+          </div>
+        </div>
+
+        <!-- Scale 3 -->
+        <div class="pt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="w-52 text-xs text-slate-400 space-y-0.5">
+            <div class="font-bold text-white">Card H3 (Bold 700)</div>
+            <div class="font-mono text-[11px]">18px / 1.35 line-height</div>
+          </div>
+          <div class="flex-1 text-lg font-bold text-cyan-300">
+            가상 전봇대 매핑 기술 (V-Pole™ 지능형 클러스터링)
+          </div>
+        </div>
+
+        <!-- Scale 4 -->
+        <div class="pt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="w-52 text-xs text-slate-400 space-y-0.5">
+            <div class="font-bold text-white">Subcopy (Medium 500)</div>
+            <div class="font-mono text-[11px]">16px / 1.6 line-height</div>
+          </div>
+          <div class="flex-1 text-base text-slate-300 font-medium leading-relaxed">
+            인터넷 접속 IP를 실시간 분석하여 정교한 접속 지역을 파악하고 맞춤형 위치 지능을 5ms 초고속 API로 제공합니다.
+          </div>
+        </div>
+
+        <!-- Scale 5 -->
+        <div class="pt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="w-52 text-xs text-slate-400 space-y-0.5">
+            <div class="font-bold text-white">Body Text (Regular 400)</div>
+            <div class="font-mono text-[11px]">14px / 1.6 line-height</div>
+          </div>
+          <div class="flex-1 text-sm text-slate-400 font-normal leading-relaxed">
+            인터넷 연결을 중계하는 전국의 가상 전봇대를 클러스터링하여 수시로 변하는 유동 IP라도 통신사 교환국 레벨을 넘어 동 단위 정밀 위치까지 지능적으로 추정합니다.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 3. UI COMPONENTS SHOWCASE                                -->
+    <!-- ======================================================== -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-2 pb-2 border-b border-white/10">
+        <iconify-icon icon="solar:widget-2-bold" class="text-2xl text-cyan-400"></iconify-icon>
+        <h2 class="text-2xl font-bold text-white">3. 주요 UI 컴포넌트 세트</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Component: Buttons & Badges -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <iconify-icon icon="solar:bolt-bold" class="text-cyan-400"></iconify-icon>
+            <span>네온 버튼 & 상태 배지</span>
+          </h3>
+
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="px-6 py-3 rounded-xl text-xs font-bold text-white neon-btn">
+                API 무료 체험
+              </button>
+              <button class="px-6 py-3 rounded-xl text-xs font-bold text-slate-300 bg-slate-800/80 hover:bg-slate-700 border border-white/10 transition-colors">
+                보조 액션 버튼
+              </button>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 pt-2">
+              <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+                SYSTEM ONLINE
+              </span>
+              <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">
+                MATCH_SUCCESS
+              </span>
+              <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
+                V-POLE CLUSTER
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component: Form Input Controls -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <iconify-icon icon="solar:pen-bold" class="text-cyan-400"></iconify-icon>
+            <span>인풋 폼 컨트롤</span>
+          </h3>
+
+          <div class="space-y-3">
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cyan-400">
+                <iconify-icon icon="solar:global-bold" class="text-lg"></iconify-icon>
+              </div>
+              <input type="text" value="221.148.24.12" readonly class="w-full pl-10 pr-4 py-2.5 bg-slate-950/80 border border-white/15 rounded-xl text-xs font-mono text-white focus:outline-none focus:border-cyan-400" />
+            </div>
+
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="sampleCheck" checked class="w-4 h-4 rounded bg-slate-950 border-white/20 text-cyan-500" />
+              <label for="sampleCheck" class="text-xs text-slate-300">개인정보 수집 및 상담 목적 이용 동의</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component: Radar Simulator Motion -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <iconify-icon icon="solar:radar-2-bold" class="text-cyan-400"></iconify-icon>
+            <span>3D 레이더 스캔 모션</span>
+          </h3>
+
+          <div class="flex items-center gap-6 py-2">
+            <div class="relative w-20 h-20 rounded-full border border-cyan-400/30 flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+              <div class="absolute inset-0 radar-beam"></div>
+              <div class="absolute w-14 h-14 rounded-full border border-cyan-400/20"></div>
+              <div class="w-2 h-2 rounded-full bg-cyan-400 z-10 shadow-[0_0_10px_#22d3ee]"></div>
+            </div>
+            <div class="space-y-1">
+              <div class="text-xs font-bold text-cyan-300 font-mono">SCAN_IN_PROGRESS</div>
+              <div class="text-[11px] text-slate-400">3s Linear Conic Rotation</div>
+              <div class="text-[10px] text-slate-500">1.4초 후 결과 대시보드 출력 인터랙션</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component: Circular Gauge Chart -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <iconify-icon icon="solar:chart-square-bold" class="text-cyan-400"></iconify-icon>
+            <span>SVG 원형 신뢰도 게이지</span>
+          </h3>
+
+          <div class="flex items-center gap-6 py-2">
+            <div class="relative w-20 h-20 flex items-center justify-center">
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="50" class="text-slate-800" stroke-width="12" stroke="currentColor" fill="transparent" />
+                <circle cx="60" cy="60" r="50" class="text-cyan-400" stroke-width="12" stroke-dasharray="314.159" stroke-dashoffset="31.4" stroke-linecap="round" stroke="currentColor" fill="transparent" />
+              </svg>
+              <span class="absolute text-sm font-extrabold text-white font-mono">92%</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-xs font-bold text-white">광역 시·도 매핑 신뢰도</div>
+              <div class="text-[11px] text-cyan-300 font-mono">Coverage 95%+ / Accuracy 92%</div>
+              <div class="text-[10px] text-slate-500">SVG stroke-dashoffset 트랜지션 적용</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer Note -->
+    <footer class="glass-card rounded-2xl p-6 text-center text-xs text-slate-400 space-y-1 border border-white/10">
+      <div class="text-slate-200 font-bold">주식회사 제온스 (ZEONS, Inc.) Supanova Design System</div>
+      <div>Designed with Tailwind CSS, Paperlogy Web Font, Glassmorphism, and Solar Icons.</div>
+    </footer>
+
+  </div>
+
+  <!-- Toast Notification for Copy -->
+  <div id="copyToast" class="fixed bottom-6 right-6 px-4 py-2.5 rounded-xl bg-slate-900 border border-cyan-400/50 text-xs text-cyan-300 shadow-2xl font-mono hidden opacity-0 transition-opacity duration-300 z-50">
+    HEX 코드 복사 완료!
+  </div>
+
+  <script>
+    function copyColor(hex, el) {
+      navigator.clipboard.writeText(hex).then(() => {
+        const toast = document.getElementById('copyToast');
+        toast.innerText = `${hex} 복사 완료!`;
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.remove('opacity-0'), 10);
+        setTimeout(() => {
+          toast.classList.add('opacity-0');
+          setTimeout(() => toast.classList.add('hidden'), 300);
+        }, 1800);
+      });
+    }
+  </script>
+</body>
+</html>
